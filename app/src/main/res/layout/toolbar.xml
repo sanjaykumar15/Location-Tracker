@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="?actionBarSize"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/element_bg"
+    app:titleTextColor="@color/white"
+    android:layout_margin="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="U"
+        android:textColor="@color/lightBlue"
+        android:textStyle="bold"
+        android:id="@+id/userTV"
+        android:textSize="16sp"
+        android:background="@drawable/user_bg"
+        android:padding="7dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_gravity="end"/>
+
+</androidx.appcompat.widget.Toolbar>

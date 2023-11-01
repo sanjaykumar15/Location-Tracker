@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Track Location</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up_intent">Don\'t have an account? Sign Up</string>
+    <string name="name">Name</string>
+    <string name="sign_up_btn">Sign Up</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="contact">Contact</string>
+    <string name="cancel">Cancel</string>
+    <string name="logout">Logout</string>
+    <string name="switch_user">Switch User</string>
+    <string name="add_user">Add User</string>
+</resources>
