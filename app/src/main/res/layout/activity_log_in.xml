@@ -26,38 +26,6 @@
 
         <include layout="@layout/login_template" />
 
-        <!--<EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/emailLoginET"
-            android:textSize="16sp"
-            android:background="@drawable/et_bg"
-            android:padding="7dp"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"
-            android:layout_marginVertical="5dp"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/passLoginET"
-            android:textSize="16sp"
-            android:background="@drawable/et_bg"
-            android:padding="7dp"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            android:layout_marginVertical="5dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/logInBtn"
-            android:textSize="16sp"
-            android:text="@string/log_in"
-            android:layout_gravity="center"
-            android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/dark_green"/>-->
-
         <TextView
             android:id="@+id/signUpTv"
             android:layout_width="wrap_content"
