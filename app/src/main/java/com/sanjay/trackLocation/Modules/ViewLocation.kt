@@ -44,20 +44,20 @@ class ViewLocation : AppCompatActivity(), OnMapReadyCallback {
         userTV = findViewById(R.id.userTV)
         userTV.visibility = View.GONE
 
-        /*val bundle = intent.extras
-        if (bundle != null){
-            latitude = bundle.getDouble("latitude")
-            longitude = bundle.getDouble("longitude")
-            currentIndex = bundle.getInt("currentIndex")
-        }*/
-
         locationsData = HomePage.locationsData
         currentIndex = HomePage.currentIndex
 
-        Toast.makeText(this, locationsData.size.toString() + "\nIndex: " +currentIndex.toString(), Toast.LENGTH_SHORT).show()
-
-        mapFragment = supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
+        mapFragment =
+            supportFragmentManager.findFragmentById(R.id.mapFragment) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        if (currentIndex == 0){
+            before.visibility = View.GONE
+        }
+
+        if (currentIndex == locationsData.size - 1){
+            next.visibility = View.GONE
+        }
 
         before.setOnClickListener {
             currentIndex -= 1
@@ -72,9 +72,9 @@ class ViewLocation : AppCompatActivity(), OnMapReadyCallback {
         next.setOnClickListener {
             currentIndex += 1
             if (currentIndex == locationsData.size - 1) {
-                before.visibility = View.GONE
+                next.visibility = View.GONE
             } else {
-                before.visibility = View.VISIBLE
+                next.visibility = View.VISIBLE
             }
             viewLocation()
         }
@@ -86,18 +86,20 @@ class ViewLocation : AppCompatActivity(), OnMapReadyCallback {
         viewLocation()
     }
 
-    private fun viewLocation(){
+    private fun viewLocation() {
         latitude = locationsData[currentIndex].latitude
         longitude = locationsData[currentIndex].longitude
-        val latLng = LatLng(latitude,longitude)
-        myGoogleMap.addMarker(MarkerOptions().position(latLng).title(
-            locationsData[currentIndex].city + ", " + locationsData[currentIndex].state
-        ))
-        myGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,16.0f))
+        val latLng = LatLng(latitude, longitude)
+        myGoogleMap.addMarker(
+            MarkerOptions().position(latLng).title(
+                locationsData[currentIndex].city + ", " + locationsData[currentIndex].state
+            )
+        )
+        myGoogleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 16.0f))
         dateTimeTv.text = locationsData[currentIndex].dateTime
     }
 
-    fun initiate(){
+    fun initiate() {
         toolbar = findViewById(R.id.toolbar)
         before = findViewById(R.id.navigateBefore)
         next = findViewById(R.id.navigateNext)

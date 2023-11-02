@@ -1,111 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/lavender"
+    android:orientation="vertical"
     android:padding="10dp">
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:id="@+id/userNameIconTV"
-            android:textSize="50sp"
-            android:gravity="center"
-            android:background="@drawable/circle_bg"
-            android:padding="7dp"
-            android:layout_marginBottom="15dp"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:id="@+id/userNameTV"
-            android:textSize="16sp"
-            android:padding="7dp"
-            android:layout_gravity="center"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="normal"
-            android:id="@+id/emailTV"
-            android:textSize="16sp"
-            android:padding="7dp"
-            android:layout_gravity="center"/>
-
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/cancelIcon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_gravity="end"
+        android:src="@drawable/cancel"
+        app:tint="@color/dark_green" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="@string/switch_user"
-        android:textStyle="normal"
-        android:textSize="16sp"
+        android:layout_gravity="center"
         android:padding="7dp"
-        android:layout_gravity="start"/>
+        android:text="@string/add_user"
+        android:textColor="@color/dark_green"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="250dp"
-        android:id="@+id/loggedInUserRV"
-        android:padding="7dp"/>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cancelBtn"
-            android:textSize="16sp"
-            android:text="@string/cancel"
-            android:textColor="@color/dark_green"
-            android:textAllCaps="false"
-            android:layout_gravity="center"
-            android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/white"
-            android:layout_alignParentStart="true"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/logOutBtn"
-            android:textSize="16sp"
-            android:text="@string/logout"
-            android:textAllCaps="false"
-            android:layout_gravity="center"
-            android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/lightBlue"
-            android:layout_alignParentEnd="true"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/addUserBtn"
-            android:textSize="16sp"
-            android:text="@string/add_user"
-            android:textAllCaps="false"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginVertical="15dp"
-            android:layout_marginHorizontal="15dp"
-            android:backgroundTint="@color/light_grey"
-            android:layout_toStartOf="@+id/logOutBtn" />
-
-    </RelativeLayout>
+    <include layout="@layout/login_template" />
 
 </LinearLayout>

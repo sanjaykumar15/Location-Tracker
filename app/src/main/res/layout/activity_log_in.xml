@@ -4,17 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Modules.LogIn">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@drawable/content_bg"
         android:layout_marginHorizontal="25dp"
-        android:orientation="vertical">
+        android:background="@drawable/content_bg"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="150dp"
@@ -24,7 +24,9 @@
             android:src="@drawable/explore"
             app:tint="@color/dark_green" />
 
-        <EditText
+        <include layout="@layout/login_template" />
+
+        <!--<EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/emailLoginET"
@@ -54,17 +56,17 @@
             android:text="@string/log_in"
             android:layout_gravity="center"
             android:layout_marginVertical="15dp"
-            android:backgroundTint="@color/dark_green"/>
+            android:backgroundTint="@color/dark_green"/>-->
 
         <TextView
+            android:id="@+id/signUpTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="7dp"
-            android:textSize="15sp"
-            android:text="@string/sign_up_intent"
-            android:id="@+id/signUpTv"
             android:layout_gravity="end"
-            android:textColor="@color/black"/>
+            android:padding="7dp"
+            android:text="@string/sign_up_intent"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
 
     </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.sanjay.trackLocation.Database.CredentialObject
+import com.sanjay.trackLocation.Modules.HomePage
 import com.sanjay.trackLocation.R
 
 class LoggedInUserRVAdapter(
@@ -15,7 +16,8 @@ class LoggedInUserRVAdapter(
 ) : RecyclerView.Adapter<LoggedInUserRVAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.logged_user_rv_template,parent,false)
+        val itemView = LayoutInflater.from(parent.context)
+            .inflate(R.layout.logged_user_rv_template, parent, false)
         return ViewHolder(itemView)
     }
 
@@ -26,9 +28,14 @@ class LoggedInUserRVAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val item = list[position]
-        holder.displayLoggedUserNameTV.text = item.name
 
-        holder.userCardItem.setOnClickListener{
+        if (item.id != HomePage.loggedInUserID) {
+            holder.displayLoggedUserNameTV.text = item.name
+        } else {
+            holder.userCardItem.visibility = View.GONE
+        }
+
+        holder.userCardItem.setOnClickListener {
             selectedUser(item)
         }
 

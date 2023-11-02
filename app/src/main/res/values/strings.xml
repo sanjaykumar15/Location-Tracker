@@ -12,4 +12,5 @@
     <string name="logout">Logout</string>
     <string name="switch_user">Switch User</string>
     <string name="add_user">Add User</string>
+    <string name="no_other_users_msg">No Other Users</string>
 </resources>

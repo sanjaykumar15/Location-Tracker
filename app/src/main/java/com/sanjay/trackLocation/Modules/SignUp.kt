@@ -35,7 +35,8 @@ class SignUp : AppCompatActivity() {
         signUpBtn = findViewById(R.id.signUpBtn)
 
         operationModel = ViewModelProvider(this)[OperationModel::class.java]
-        val sharedPreferences : SharedPreferences = this.getSharedPreferences("data", Context.MODE_PRIVATE)
+        val sharedPreferences: SharedPreferences =
+            this.getSharedPreferences("data", Context.MODE_PRIVATE)
 
         signUpBtn.setOnClickListener {
 
@@ -45,29 +46,33 @@ class SignUp : AppCompatActivity() {
             val cPass = cPassET.text.toString()
             val contact = contactET.text.toString()
 
-            if (name.isEmpty()){
-                Toast.makeText(this,"Please Enter Name", Toast.LENGTH_SHORT).show()
-            } else if (email.isEmpty()){
-                Toast.makeText(this,"Please Enter Email", Toast.LENGTH_SHORT).show()
-            } else if (pass.isEmpty()){
-                Toast.makeText(this,"Please Enter Password", Toast.LENGTH_SHORT).show()
-            } else if (cPass.isEmpty()){
-                Toast.makeText(this,"Please Enter Confirm Password", Toast.LENGTH_SHORT).show()
-            } else if (pass != cPass){
-                Toast.makeText(this,"Password and Confirm Password should be same", Toast.LENGTH_SHORT).show()
-            } else if (contact.isEmpty()){
-                Toast.makeText(this,"Please Enter Contact Number", Toast.LENGTH_SHORT).show()
+            if (name.isEmpty()) {
+                Toast.makeText(this, "Please Enter Name", Toast.LENGTH_SHORT).show()
+            } else if (email.isEmpty()) {
+                Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT).show()
+            } else if (pass.isEmpty()) {
+                Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT).show()
+            } else if (cPass.isEmpty()) {
+                Toast.makeText(this, "Please Enter Confirm Password", Toast.LENGTH_SHORT).show()
+            } else if (pass != cPass) {
+                Toast.makeText(
+                    this,
+                    "Password and Confirm Password should be same",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (contact.isEmpty()) {
+                Toast.makeText(this, "Please Enter Contact Number", Toast.LENGTH_SHORT).show()
             } else {
-                operationModel.signUp(name,email,pass,contact)
-                operationModel.userId.observe(this){
+                operationModel.signUp(name, email, pass, contact)
+                operationModel.userId.observe(this) {
                     HomePage.loggedInUserID = it
                     val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                    editor.putInt("USER_ID",it)
-                    editor.putString("USERNAME",name)
-                    editor.putString("EMAIL",email)
+                    editor.putInt("USER_ID", it)
+                    editor.putString("USERNAME", name)
+                    editor.putString("EMAIL", email)
                     editor.apply()
                     editor.commit()
-                    val i = Intent(this,HomePage::class.java)
+                    val i = Intent(this, HomePage::class.java)
                     startActivity(i)
                     finish()
                 }

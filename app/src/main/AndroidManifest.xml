@@ -5,8 +5,8 @@
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
-    <!--android:name=".Database.RealmDbCon"-->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -17,7 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TrackLocation"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Modules.Profile"
+            android:exported="false" />
         <activity
             android:name=".Modules.ViewLocation"
             android:exported="false" />
@@ -39,8 +41,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDypgfgwh6Hayv3jIU1I2WHT8cAla5-i9k"/>
-
+            android:value="AIzaSyDypgfgwh6Hayv3jIU1I2WHT8cAla5-i9k" />
     </application>
 
 </manifest>

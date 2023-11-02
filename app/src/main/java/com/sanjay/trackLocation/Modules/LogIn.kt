@@ -38,54 +38,64 @@ class LogIn : AppCompatActivity() {
 
         operationModel = ViewModelProvider(this)[OperationModel::class.java]
 
-        val sharedPreferences : SharedPreferences = this.getSharedPreferences("data",Context.MODE_PRIVATE)
-        val USER_ID: Int = sharedPreferences.getInt("USER_ID",0)
-        if (USER_ID != 0){
+        val sharedPreferences: SharedPreferences =
+            this.getSharedPreferences("data", Context.MODE_PRIVATE)
+        val USER_ID: Int = sharedPreferences.getInt("USER_ID", 0)
+        if (USER_ID != 0) {
             HomePage.loggedInUserID = USER_ID
             goToHomePage()
         }
 
-        logInBtn.setOnClickListener{
+        logInBtn.setOnClickListener {
 
             val email = emailET.text.toString()
             val pass = passET.text.toString()
 
-            if (email.isEmpty()){
-                Toast.makeText(this,"Please Enter Email",Toast.LENGTH_SHORT).show()
-            } else if (pass.isEmpty()){
-                Toast.makeText(this,"Please Enter Password",Toast.LENGTH_SHORT).show()
+            if (email.isEmpty()) {
+                Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT).show()
+            } else if (pass.isEmpty()) {
+                Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT).show()
             } else {
-                operationModel.logIn(email,pass)
-                operationModel.logInResultData.observe(this){
+                operationModel.logIn(email, pass)
+                operationModel.logInResultData.observe(this) {
                     resultData = it
-                    if (resultData.isNotEmpty()){
+                    if (resultData.isNotEmpty()) {
                         HomePage.loggedInUserID = resultData[0].id
-                        operationModel.updateIsLoggedIn(resultData[0].id,true)
+                        operationModel.updateIsLoggedIn(resultData[0].id, true)
                         val editor: SharedPreferences.Editor = sharedPreferences.edit()
-                        editor.putInt("USER_ID",resultData[0].id)
-                        editor.putString("USERNAME",resultData[0].name)
-                        editor.putString("EMAIL",resultData[0].email)
+                        editor.putInt("USER_ID", resultData[0].id)
+                        editor.putString("USERNAME", resultData[0].name)
+                        editor.putString("EMAIL", resultData[0].email)
                         editor.apply()
                         editor.commit()
                         goToHomePage()
                     } else {
-                        Toast.makeText(this, "Email or Password doesn't match.\nKindly try again", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            this,
+                            "Email or Password doesn't match.\nKindly try again",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 }
             }
         }
 
         signUpTV.setOnClickListener {
-            val intent = Intent(this,SignUp::class.java)
+            val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
         }
 
     }
 
-    private fun goToHomePage(){
-        val i = Intent(this,HomePage::class.java)
+    private fun goToHomePage() {
+        val i = Intent(this, HomePage::class.java)
         startActivity(i)
         finish()
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
     }
 
 }
