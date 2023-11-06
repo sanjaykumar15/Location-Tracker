@@ -76,7 +76,7 @@ class HomePage : AppCompatActivity() {
 
 //        getCurrentLocation()
         handler = Handler(Looper.getMainLooper())
-        handler.postDelayed(runnable, 1000 * 60)
+        handler.postDelayed(runnable, 1000 * 30)
 
         recyclerView = findViewById(R.id.locationHistoryRV)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -102,7 +102,7 @@ class HomePage : AppCompatActivity() {
         }
 
         userTV.setOnClickListener {
-            val i = Intent(this,Profile::class.java)
+            val i = Intent(this, Profile::class.java)
             startActivity(i)
         }
 
@@ -170,17 +170,14 @@ class HomePage : AppCompatActivity() {
     }
 
     private fun requestPermission() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            ActivityCompat.requestPermissions(
-                this,
-                arrayOf(
-                    Manifest.permission.ACCESS_FINE_LOCATION,
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_BACKGROUND_LOCATION
-                ),
-                REQUEST_CODE
-            )
-        }
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ),
+            REQUEST_CODE
+        )
     }
 
     private fun isLocationEnable(): Boolean {
